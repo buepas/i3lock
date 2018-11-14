@@ -233,9 +233,10 @@ xcb_pixmap_t draw_image(uint32_t *resolution) {
                     break;
             }
         }
-
-        set_auth_color('f');
-        cairo_fill_preserve(ctx);
+        if (auth_state != STATE_AUTH_IDLE) {
+            set_auth_color('f');
+            cairo_fill_preserve(ctx);
+        }
 
         /* Circle border */
         set_auth_color('l');
